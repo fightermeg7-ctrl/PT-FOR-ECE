@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PT FOR ECE</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@500;600&family=Sacramento&display=swap');
+
+:root{
+  --pink:#ff5f9e; --deep:#9d285d; --soft:#fff0f6; --paper:#fffafc;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; min-height:100vh; color:#6d2948;
+  font-family:"DM Sans",sans-serif;
+  background:
+    radial-gradient(circle at 15% 15%, #ffd0e3 0 7%, transparent 28%),
+    radial-gradient(circle at 90% 80%, #ffc2db 0 6%, transparent 30%),
+    linear-gradient(135deg,#ffe4ef,#fff7fa 48%,#ffd3e5);
+  overflow-x:hidden;
+}
+body:before{
+  content:""; position:fixed; inset:0; pointer-events:none; opacity:.22;
+  background-image:radial-gradient(#d94c83 0.7px,transparent .7px);
+  background-size:18px 18px;
+}
+nav{
+  position:fixed; top:0; left:0; right:0; z-index:50;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:15px clamp(18px,5vw,70px);
+  background:rgba(255,250,252,.76); backdrop-filter:blur(15px);
+  border-bottom:1px solid rgba(190,50,105,.12);
+}
+.logo{font-family:"Sacramento",cursive;font-size:31px;color:#a72c62}
+.logo span{font-family:inherit;color:#ff5f9e}
+.links{display:flex;gap:8px}
+.links button{
+  border:0;background:transparent;color:#8d3158;font-weight:700;
+  padding:9px 13px;border-radius:999px;cursor:pointer;font:inherit;
+}
+.links button:hover,.links button.active{background:#ffe0ec;color:#a5225b}
+main{min-height:100vh;padding-top:86px}
+.page{display:none;min-height:calc(100vh - 86px);padding:55px 20px 70px}
+.page.active{display:flex;align-items:center;justify-content:center;animation:fade .55s ease}
+.container{width:min(930px,100%);margin:auto}
+.hero{text-align:center}
+.hero h1{
+  font-family:"Playfair Display",serif;font-size:clamp(42px,7vw,76px);
+  line-height:1.05;margin:15px 0;color:#9f2c60
+}
+.script{font-family:"Sacramento",cursive;font-size:38px;color:#e44c88}
+.hero p{font-size:17px;line-height:1.8;max-width:620px;margin:20px auto}
+
+.envelope-scene{
+  display:flex;align-items:center;justify-content:center;gap:22px;margin:25px auto 32px;
+}
+.side-photos{width:145px;display:flex;flex-direction:column;gap:14px}
+.side-photos img{
+  width:190;height:145px;object-fit:cover;background:#fff;padding:7px 7px 18px;
+  border:1px solid #f0cada;box-shadow:0 10px 22px rgba(129,28,72,.14);
+  border-radius:3px;transition:.25s;
+}
+.left-photos img:first-child{transform:rotate(-7deg)}
+.left-photos img:last-child{transform:rotate(5deg)}
+.right-photos img:first-child{transform:rotate(6deg)}
+.right-photos img:last-child{transform:rotate(-6deg)}
+.side-photos img:hover{transform:rotate(0deg) translateY(-4px) scale(1.04);z-index:2}
+@media(max-width:780px){
+  .envelope-scene{gap:8px}
+  .side-photos{width:95px;gap:10px}
+  .side-photos img{width:95px;height:75px;padding:5px 5px 14px}
+  .envelope{width:190px;height:125px}
+  .flap{border-left-width:95px;border-right-width:95px;border-top-width:66px}
+  .env-body:after{border-width:0 95px 72px 0}
+  .env-body:before{border-width:72px 95px 0 0}
+}
+@media(max-width:520px){
+  .side-photos{width:68px}
+  .side-photos img{width:68px;height:58px;padding:4px 4px 11px}
+  .envelope{width:155px;height:103px}
+  .flap{border-left-width:77.5px;border-right-width:77.5px;border-top-width:55px}
+  .env-body:after{border-width:0 77.5px 59px 0}
+  .env-body:before{border-width:59px 77.5px 0 0}
+  .seal{width:36px;height:36px;font-size:18px}
+}
+.envelope{
+  width:220px;height:145px;margin:25px auto 32px;position:relative;cursor:pointer;
+  filter:drop-shadow(0 15px 18px rgba(129,28,72,.15));
+}
+.env-body{position:absolute;inset:0;background:#ff7fb0;border-radius:9px}
+.env-body:after,.env-body:before{
+  content:"";position:absolute;bottom:0;width:0;height:0;border-style:solid
+}
+.env-body:after{left:0;border-width:0 110px 83px 0;border-color:transparent #ffabc9 transparent transparent}
+.env-body:before{right:0;border-width:83px 110px 0 0;border-color:#ffabc9 transparent transparent transparent}
+.flap{
+  position:absolute;top:0;left:0;width:0;height:0;z-index:3;
+  border-left:110px solid transparent;border-right:110px solid transparent;
+  border-top:76px solid #ffb7d0;transform-origin:top;transition:.6s;
+}
+.seal{
+  position:absolute;z-index:5;left:50%;top:57%;transform:translate(-50%,-50%);
+  width:43px;height:43px;border-radius:50%;background:#e94683;color:white;
+  display:grid;place-items:center;font-size:21px
+}
+.envelope:hover .flap{transform:rotateX(155deg)}
+.btn{
+  border:0;border-radius:999px;padding:13px 22px;cursor:pointer;
+  background:#e94f8c;color:white;font-weight:700;font-size:15px;
+  box-shadow:0 9px 22px rgba(191,40,101,.2);transition:.2s;
+}
+.btn:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(191,40,101,.28)}
+.letter-wrap{position:relative}
+.letter{
+  position:relative;max-width:790px;margin:auto;padding:clamp(30px,6vw,65px);
+  background:var(--paper);border:1px solid #f4cadb;
+  box-shadow:0 22px 55px rgba(130,34,74,.15);
+  transform:rotate(-.4deg);
+}
+.letter:before,.letter:after{
+  content:"";position:absolute;width:100px;height:27px;background:#ffdbe8aa;top:-13px
+}
+.letter:before{left:13%;transform:rotate(-3deg)} .letter:after{right:13%;transform:rotate(3deg)}
+.letter h2{font-family:"Playfair Display",serif;font-size:clamp(30px,5vw,47px);color:#9d285d;margin:0 0 10px}
+.number{font-family:"Sacramento",cursive;font-size:43px;color:#ef6b9f}
+.letter p{font-family:"Playfair Display",serif;font-size:17px;line-height:1.95;margin:17px 0}
+.letter .signature{font-family:"Sacramento",cursive;font-size:34px;text-align:right;color:#d8447e}
+.navrow{display:flex;justify-content:space-between;gap:15px;max-width:790px;margin:22px auto 0}
+.prev,.next{border:1px solid #f0a8c5;background:#fff;color:#a22c60}
+.heart{
+  position:fixed;z-index:1;pointer-events:none;bottom:-30px;
+  color:#ed5b94;animation:float 7s linear forwards;opacity:.65
+}
+@keyframes float{to{transform:translateY(-110vh) rotate(30deg);opacity:0}}
+@keyframes fade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@media(max-width:650px){
+ nav{padding:12px 13px}.logo{font-size:27px}.links{gap:1px}.links button{padding:8px 8px;font-size:12px}
+ .page{padding-top:38px}.letter p{font-size:16px}.navrow{flex-direction:column}
+ .navrow button{width:100%}
+}
+</style>
+</head>
+<body>
+<audio id="bgMusic" autoplay loop preload="auto">
+  <source src="intro (end of the world)(1).mp3" type="audio/mpeg">
+</audio>
+<nav>
+  <div class="logo">♥ For You</div>
+  <div class="links">
+    <button data-page="0">Home</button><button data-page="1">I</button>
+    <button data-page="2">II</button><button data-page="3">III</button><button data-page="4">IV</button>
+  </div>
+</nav>
+
+<main>
+<section class="page active" id="p0">
+ <div class="container hero">
+  <div class="script">Just a little something...</div>
+  <h1>Four Letters<br>For You 💗</h1>
+  <div class="envelope-scene">
+   <div class="side-photos left-photos">
+    <img src="photo1.jpeg" alt="Memory photo 1">
+    <img src="photo2.jpeg" alt="Memory photo 2">
+   </div>
+   <div class="envelope" onclick="showPage(1)" title="Open the letters">
+    <div class="env-body"></div><div class="flap"></div><div class="seal">♥</div>
+   </div>
+   <div class="side-photos right-photos">
+    <img src="photo3.jpeg" alt="Memory photo 3">
+    <img src="photo4.jpeg" alt="Memory photo 4">
+   </div>
+  </div>
+  <p>Four reasons. Four letters. One person I chose to write all of this for.</p>
+  <button class="btn" onclick="showPage(1)">Open the letters →</button>
+ </div>
+</section>
+
+<section class="page" id="p1">
+ <div class="container letter-wrap">
+  <article class="letter">
+   <p>Dear Katy,</p>
+   <p>I don't think I say this enough at all, but thank you for all the times that you helped me with school. There are days when everything feels overwhelming, confusing, or just exhausting, but alot of times somehow you make it feel a little less heavy.</p>
+   <p>Whether you help me understand something, listen when I'm stressed, give me advice, or simply stay there when I need someone, you make a big difference in my life jud huhuhu. You remind me that I don't have to figure everything out alone.</p>
+   <p>Because of you, school doesn't always feel like something I have to face by myself, pero tungod sad nimo im facing these challenges right now hshshs, but i know its worth it rjud. Thank you for being there through the deadlines, the stress, the random questions, and all the little moments in between. ♡</p>
+   <p class="signature">Thank you for always being there for me :(  . ♡</p>
+  </article>
+  <div class="navrow"><button class="btn prev" onclick="showPage(0)">← Home</button><button class="btn" onclick="showPage(2)">Next letter →</button></div>
+ </div>
+</section>
+
+<section class="page" id="p2">
+ <div class="container letter-wrap">
+  <article class="letter">
+   <p>Dear My one and only baby,</p>
+   <p>Sometimes my mind gets way too loud. I overthink, I worry, and I can let little things become much bigger in my head. You have a way of helping me slow down and come back to myself.</p>
+   <p>You remind me to breathe, think clearly, and not let one bad moment control everything. You don't have to solve every problem for me. Sometimes, just having you there is enough to help me feel steady again.</p>
+   <p>Thank you for being someone who helps me keep my balance and my composure, especially when I feel like I have neither. With you, I can be a little calmer, a little more patient, and a lot more at peace.</p>
+   <p class="signature">Thank you for being my calm in the chaos. ♡</p>
+  </article>
+  <div class="navrow"><button class="btn prev" onclick="showPage(1)">← Previous</button><button class="btn" onclick="showPage(3)">Next letter →</button></div>
+ </div>
+</section>
+
+<section class="page" id="p3">
+ <div class="container letter-wrap">
+  <article class="letter">
+   <p>Dear Cutie,</p>
+   <p>You motivate me in ways you probably don't even realize. Sometimes it's through your words, sometimes through the way you believe in me, and sometimes simply because I know there's someone cheering for me.</p>
+   <p>When I doubt myself, you remind me that I can still try. When I'm tired, you give me a reason to keep going. You make me want to improve, not because I have to be perfect, but because I know I'm capable of becoming better.</p>
+   <p>Thank you for reminding me of what I'm capable of. I hope I can give you even a little of the encouragement you've given me.</p>
+   <p class="signature">Thank you for believing in me. ♡</p>
+  </article>
+  <div class="navrow"><button class="btn prev" onclick="showPage(2)">← Previous</button><button class="btn" onclick="showPage(4)">Last letter →</button></div>
+ </div>
+</section>
+
+<section class="page" id="p4">
+ <div class="container letter-wrap">
+  <article class="letter">
+   <p>Dear you, my partner until the future,</p>
+   <p>And finally, the question: why did I choose you?</p>
+   <p>Honestly, it isn't because you're perfect. You're not. 😭 You annoy me, you tease me, and sometimes you really do keep <i>kasaba</i>-ing me. HAHAHA.</p>
+   <p>But even with all of that, Ill still choose you because of who you are to me. You're someone who helps me, keeps me grounded, pushes me forward, makes me laugh, and stays present through both the good and difficult days.</p>
+   <p>I don't choose you because everything is always easy. I choose you because even when things aren't easy, you're still someone I value. Your imperfections don't erase the good you've brought into my life.</p>
+   <p>So yes, I choose you, because you were the only one the chooses me when no one else did, you chose me when you were not sure, you chose me, and thats why ill choose you forever and ever. 😭💗</p>
+   <p class="signature">ayna sigeg pangaway nako - love Lucas XoXo type shi ♡</p>
+  </article>
+  <div class="navrow"><button class="btn prev" onclick="showPage(3)">← Previous</button><button class="btn" onclick="showPage(0)">♥ Read again</button></div>
+ </div>
+</section>
+</main>
+
+<script>
+const pages=[...document.querySelectorAll(".page")];
+const nav=[...document.querySelectorAll(".links button")];
+function showPage(n){
+ pages.forEach((p,i)=>p.classList.toggle("active",i===n));
+ nav.forEach((b,i)=>b.classList.toggle("active",i===n));
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+nav.forEach((b,i)=>b.addEventListener("click",()=>showPage(i)));
+showPage(0);
+
+// Try to start the music as soon as the page opens.
+// Some browsers block audible autoplay until the visitor interacts with the page.
+const bgMusic = document.getElementById("bgMusic");
+bgMusic.volume = 0.65;
+bgMusic.play().catch(() => {});
+const startMusic = () => {
+  bgMusic.play().catch(() => {});
+  document.removeEventListener("click", startMusic);
+  document.removeEventListener("touchstart", startMusic);
+  document.removeEventListener("keydown", startMusic);
+};
+document.addEventListener("click", startMusic, {once:true});
+document.addEventListener("touchstart", startMusic, {once:true});
+document.addEventListener("keydown", startMusic, {once:true});
+
+function heart(){
+ const h=document.createElement("div");
+ h.className="heart"; h.textContent=Math.random()>.25?"♥":"♡";
+ h.style.left=Math.random()*100+"vw";
+ h.style.fontSize=(12+Math.random()*20)+"px";
+ h.style.animationDuration=(5+Math.random()*5)+"s";
+ document.body.appendChild(h);
+ setTimeout(()=>h.remove(),10000);
+}
+setInterval(heart,900);
+</script>
+</body>
+</html>
