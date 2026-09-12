@@ -12,7 +12,9 @@
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{
+body
+
+{
   margin:0; min-height:100vh; color:#6d2948;
   font-family:"DM Sans",sans-serif;
   background:
@@ -52,39 +54,6 @@ main{min-height:100vh;padding-top:86px}
 }
 .script{font-family:"Sacramento",cursive;font-size:38px;color:#e44c88}
 .hero p{font-size:17px;line-height:1.8;max-width:620px;margin:20px auto}
-
-.envelope-scene{
-  display:flex;align-items:center;justify-content:center;gap:22px;margin:25px auto 32px;
-}
-.side-photos{width:145px;display:flex;flex-direction:column;gap:14px}
-.side-photos img{
-  width:145px;height:105px;object-fit:cover;background:#fff;padding:7px 7px 18px;
-  border:1px solid #f0cada;box-shadow:0 10px 22px rgba(129,28,72,.14);
-  border-radius:3px;transition:.25s;
-}
-.left-photos img:first-child{transform:rotate(-7deg)}
-.left-photos img:last-child{transform:rotate(5deg)}
-.right-photos img:first-child{transform:rotate(6deg)}
-.right-photos img:last-child{transform:rotate(-6deg)}
-.side-photos img:hover{transform:rotate(0deg) translateY(-4px) scale(1.04);z-index:2}
-@media(max-width:780px){
-  .envelope-scene{gap:8px}
-  .side-photos{width:95px;gap:10px}
-  .side-photos img{width:95px;height:75px;padding:5px 5px 14px}
-  .envelope{width:190px;height:125px}
-  .flap{border-left-width:95px;border-right-width:95px;border-top-width:66px}
-  .env-body:after{border-width:0 95px 72px 0}
-  .env-body:before{border-width:72px 95px 0 0}
-}
-@media(max-width:520px){
-  .side-photos{width:68px}
-  .side-photos img{width:68px;height:58px;padding:4px 4px 11px}
-  .envelope{width:155px;height:103px}
-  .flap{border-left-width:77.5px;border-right-width:77.5px;border-top-width:55px}
-  .env-body:after{border-width:0 77.5px 59px 0}
-  .env-body:before{border-width:59px 77.5px 0 0}
-  .seal{width:36px;height:36px;font-size:18px}
-}
 .envelope{
   width:220px;height:145px;margin:25px auto 32px;position:relative;cursor:pointer;
   filter:drop-shadow(0 15px 18px rgba(129,28,72,.15));
@@ -143,9 +112,6 @@ main{min-height:100vh;padding-top:86px}
 </style>
 </head>
 <body>
-<audio id="bgMusic" autoplay loop preload="auto">
-  <source src="intro (end of the world)(1).mp3" type="audio/mpeg">
-</audio>
 <nav>
   <div class="logo">♥ For You</div>
   <div class="links">
@@ -158,19 +124,9 @@ main{min-height:100vh;padding-top:86px}
 <section class="page active" id="p0">
  <div class="container hero">
   <div class="script">Just a little something...</div>
-  <h1>Four Letters<br>For You 💗</h1>
-  <div class="envelope-scene">
-   <div class="side-photos left-photos">
-    <img src="photo1.jpeg" alt="Memory photo 1">
-    <img src="photo2.jpeg" alt="Memory photo 2">
-   </div>
-   <div class="envelope" onclick="showPage(1)" title="Open the letters">
-    <div class="env-body"></div><div class="flap"></div><div class="seal">♥</div>
-   </div>
-   <div class="side-photos right-photos">
-    <img src="photo3.jpeg" alt="Memory photo 3">
-    <img src="photo4.jpeg" alt="Memory photo 4">
-   </div>
+  <h1>Four Letters<br>For My One And Only 💗</h1>
+  <div class="envelope" onclick="showPage(1)" title="Open the letters">
+   <div class="env-body"></div><div class="flap"></div><div class="seal">♥</div>
   </div>
   <p>Four reasons. Four letters. One person I chose to write all of this for.</p>
   <button class="btn" onclick="showPage(1)">Open the letters →</button>
@@ -180,6 +136,8 @@ main{min-height:100vh;padding-top:86px}
 <section class="page" id="p1">
  <div class="container letter-wrap">
   <article class="letter">
+   <div class="number">Letter I</div>
+   <h2>How You Help Me With School</h2>
    <p>Dear Katy,</p>
    <p>I don't think I say this enough at all, but thank you for all the times that you helped me with school. There are days when everything feels overwhelming, confusing, or just exhausting, but alot of times somehow you make it feel a little less heavy.</p>
    <p>Whether you help me understand something, listen when I'm stressed, give me advice, or simply stay there when I need someone, you make a big difference in my life jud huhuhu. You remind me that I don't have to figure everything out alone.</p>
@@ -193,7 +151,9 @@ main{min-height:100vh;padding-top:86px}
 <section class="page" id="p2">
  <div class="container letter-wrap">
   <article class="letter">
-   <p>Dear Baby,</p>
+   <div class="number">Letter II</div>
+   <h2>How You Keep Me Balanced</h2>
+   <p>Dear Katy,</p>
    <p>Sometimes my mind gets way too loud. I overthink, I worry, and I can let little things become much bigger in my head. You have a way of helping me slow down and come back to myself.</p>
    <p>You remind me to breathe, think clearly, and not let one bad moment control everything. You don't have to solve every problem for me. Sometimes, just having you there is enough to help me feel steady again.</p>
    <p>Thank you for being someone who helps me keep my balance and my composure, especially when I feel like I have neither. With you, I can be a little calmer, a little more patient, and a lot more at peace.</p>
@@ -206,7 +166,9 @@ main{min-height:100vh;padding-top:86px}
 <section class="page" id="p3">
  <div class="container letter-wrap">
   <article class="letter">
-   <p>Dear Cutie,</p>
+   <div class="number">Letter III</div>
+   <h2>How You Motivate Me</h2>
+   <p>Dear Katy,</p>
    <p>You motivate me in ways you probably don't even realize. Sometimes it's through your words, sometimes through the way you believe in me, and sometimes simply because I know there's someone cheering for me.</p>
    <p>When I doubt myself, you remind me that I can still try. When I'm tired, you give me a reason to keep going. You make me want to improve, not because I have to be perfect, but because I know I'm capable of becoming better.</p>
    <p>Thank you for reminding me of what I'm capable of. I hope I can give you even a little of the encouragement you've given me.</p>
@@ -219,16 +181,20 @@ main{min-height:100vh;padding-top:86px}
 <section class="page" id="p4">
  <div class="container letter-wrap">
   <article class="letter">
-   <p>Dear you, my partner until the future,</p>
+   <div class="number">Letter IV</div>
+   <h2>Why I Chose You</h2>
+   <p>Dear Katy,</p>
    <p>And finally, the question: why did I choose you?</p>
-   <p>Honestly, it isn't because you're perfect. You're not. 😭 You annoy me, you tease me, and sometimes you really do keep <i>kasaba</i>-ing me. HAHAHA.</p>
-   <p>But even with all of that, Ill still choose you because of who you are to me. You're someone who helps me, keeps me grounded, pushes me forward, makes me laugh, and stays present through both the good and difficult days.</p>
+   <p>Honestly, it isn't because you're perfect. You're not. 😭 You annoy me, you tease me, and sometimes you really do keep <i>kasab</i>-ing me. HAHAHA.</p>
+   <p>But even with all of that, I still choose you because of who you are to me. You're someone who helps me, keeps me grounded, pushes me forward, makes me laugh, and stays present through both the good and difficult days.</p>
    <p>I don't choose you because everything is always easy. I choose you because even when things aren't easy, you're still someone I value. Your imperfections don't erase the good you've brought into my life.</p>
-   <p>So yes, I choose you, because you were the only one the chooses me when no one else did, you chose me when you were not sure, you chose me, and thats why ill choose you forever and ever. 😭💗</p>
-   <p class="signature">ayna sigeg pangaway nako - love Lucas XoXo type shi ♡</p>
+   <p>So yes, I chose you. Even if you always kasab me. 😭💗</p>
+   <p class="signature">Still choosing you — stubborn and all. ♡</p>
   </article>
   <div class="navrow"><button class="btn prev" onclick="showPage(3)">← Previous</button><button class="btn" onclick="showPage(0)">♥ Read again</button></div>
  </div>
+</section>
+</main>
 </section>
 </main>
 
@@ -242,21 +208,6 @@ function showPage(n){
 }
 nav.forEach((b,i)=>b.addEventListener("click",()=>showPage(i)));
 showPage(0);
-
-// Try to start the music as soon as the page opens.
-// Some browsers block audible autoplay until the visitor interacts with the page.
-const bgMusic = document.getElementById("bgMusic");
-bgMusic.volume = 0.65;
-bgMusic.play().catch(() => {});
-const startMusic = () => {
-  bgMusic.play().catch(() => {});
-  document.removeEventListener("click", startMusic);
-  document.removeEventListener("touchstart", startMusic);
-  document.removeEventListener("keydown", startMusic);
-};
-document.addEventListener("click", startMusic, {once:true});
-document.addEventListener("touchstart", startMusic, {once:true});
-document.addEventListener("keydown", startMusic, {once:true});
 
 function heart(){
  const h=document.createElement("div");
