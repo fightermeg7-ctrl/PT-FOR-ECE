@@ -373,6 +373,343 @@ function closeMonthsary() {
         document.getElementById("monthsary-screen").remove();
     }, 1000);
 }
+</script><!-- MONTHSARY INTRO -->
+<div id="monthsary-screen">
+
+    <!-- Floating hearts -->
+    <div class="heart heart1">♥</div>
+    <div class="heart heart2">♥</div>
+    <div class="heart heart3">♡</div>
+    <div class="heart heart4">♥</div>
+    <div class="heart heart5">♡</div>
+    <div class="heart heart6">♥</div>
+    <div class="heart heart7">♡</div>
+    <div class="heart heart8">♥</div>
+
+    <div class="monthsary-content">
+
+        <h1>September 14</h1>
+
+        <h2>Happy Monthsary ❤️</h2>
+
+        <p>Another month of choosing each other.</p>
+
+        <!-- 4 PHOTO SLIDESHOW -->
+        <div class="photo-container">
+            <img src="photo1.jpeg" class="month-photo active">
+            <img src="photo2.jpeg" class="month-photo">
+            <img src="photo3.jpeg" class="month-photo">
+            <img src="photo4.jpeg" class="month-photo">
+        </div>
+
+        <button onclick="closeMonthsary()">
+            Enter our story ✨
+        </button>
+
+    </div>
+</div>
+
+
+<style>
+
+#monthsary-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+
+    background: linear-gradient(
+        135deg,
+        #ffe6ef,
+        #fff7fa,
+        #ffd9e7
+    );
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+
+    animation: screenIn 1s ease;
+}
+
+.monthsary-content {
+    text-align: center;
+    position: relative;
+    z-index: 10;
+}
+
+.monthsary-content h1 {
+    font-family: Georgia, serif;
+    font-size: 60px;
+    color: #b83260;
+    margin: 0 0 10px;
+
+    animation: titleIn 1.5s ease;
+}
+
+.monthsary-content h2 {
+    font-family: Georgia, serif;
+    font-size: 35px;
+    color: #d94f7c;
+    margin: 10px;
+
+    animation: titleIn 2s ease;
+}
+
+.monthsary-content p {
+    font-size: 19px;
+    color: #754052;
+    margin-bottom: 20px;
+
+    animation: fadeIn 2.5s ease;
+}
+
+
+/* PHOTO SLIDESHOW */
+
+.photo-container {
+    width: min(80vw, 600px) !important;
+    height: min(55vh, 500px) !important;
+
+    position: relative !important;
+    margin: 20px auto !important;
+
+    overflow: hidden !important;
+    border-radius: 20px;
+
+    background: white;
+}
+.month-photo {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    object-fit: contain !important;
+    object-position: center !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    opacity: 0;
+    transition: opacity 1s ease, transform 4s ease;
+}
+
+.month-photo.active {
+    opacity: 1 !important;
+}
+
+
+/* BUTTON */
+
+#monthsary-screen button {
+    padding: 14px 28px;
+
+    border: none;
+    border-radius: 30px;
+
+    background: #d94f7c;
+    color: white;
+
+    font-size: 17px;
+
+    cursor: pointer;
+
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+
+    animation: fadeIn 3s ease;
+
+    transition: transform 0.3s;
+}
+
+#monthsary-screen button:hover {
+    transform: scale(1.08);
+}
+
+
+/* FLOATING HEARTS */
+
+.heart {
+    position: absolute;
+
+    bottom: -50px;
+
+    color: #e85b86;
+
+    font-size: 30px;
+
+    opacity: 0.7;
+
+    animation: floatHeart 6s linear infinite;
+}
+
+.heart1 {
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.heart2 {
+    left: 22%;
+    animation-delay: 1.5s;
+}
+
+.heart3 {
+    left: 35%;
+    animation-delay: 3s;
+}
+
+.heart4 {
+    left: 48%;
+    animation-delay: 0.8s;
+}
+
+.heart5 {
+    left: 62%;
+    animation-delay: 2.5s;
+}
+
+.heart6 {
+    left: 75%;
+    animation-delay: 4s;
+}
+
+.heart7 {
+    left: 87%;
+    animation-delay: 1s;
+}
+
+.heart8 {
+    left: 55%;
+    animation-delay: 5s;
+}
+
+
+/* ANIMATIONS */
+
+@keyframes floatHeart {
+
+    0% {
+        transform:
+            translateY(0)
+            rotate(0deg)
+            scale(0.7);
+
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 0.8;
+    }
+
+    50% {
+        transform:
+            translateY(-50vh)
+            rotate(20deg)
+            scale(1.1);
+    }
+
+    100% {
+        transform:
+            translateY(-110vh)
+            rotate(-20deg)
+            scale(0.8);
+
+        opacity: 0;
+    }
+}
+
+
+@keyframes titleIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px) scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+@keyframes fadeIn {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+@keyframes screenIn {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+@keyframes screenOut {
+
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+</style>
+
+
+<script>
+
+/* PHOTO SLIDESHOW */
+
+const photos = document.querySelectorAll(".month-photo");
+
+let currentPhoto = 0;
+
+setInterval(() => {
+
+    photos[currentPhoto].classList.remove("active");
+
+    currentPhoto++;
+
+    if (currentPhoto >= photos.length) {
+        currentPhoto = 0;
+    }
+
+    photos[currentPhoto].classList.add("active");
+
+}, 3000);
+
+
+/* CLOSE INTRO */
+
+function closeMonthsary() {
+
+    const screen = document.getElementById("monthsary-screen");
+
+    screen.style.animation = "screenOut 1s ease forwards";
+
+    setTimeout(() => {
+        screen.remove();
+    }, 1000);
+}
+
 </script>
 </body>
 </html>
