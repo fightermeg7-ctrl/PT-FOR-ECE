@@ -267,7 +267,112 @@ function heart(){
  document.body.appendChild(h);
  setTimeout(()=>h.remove(),10000);
 }
-setInterval(heart,900);
+setInterval(heart,900)
+</script><!-- MONTHSARY INTRO -->
+<div id="monthsary-screen">
+    <div class="hearts">♡ ♥ ♡ ♥ ♡</div>
+
+    <h1>September 14</h1>
+
+    <h2>Happy Monthsary ❤️</h2>
+
+    <p>Another month of choosing each other.</p>
+
+    <div class="floating-hearts">❤️ 💕 ❤️ 💗 ❤️</div>
+
+    <button onclick="closeMonthsary()">Enter our story ✨</button>
+</div>
+
+<style>
+#monthsary-screen {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(135deg, #ffe6ef, #fff5f8, #ffd6e5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 99999;
+    font-family: Georgia, serif;
+}
+
+#monthsary-screen h1 {
+    font-size: 60px;
+    color: #b83260;
+    animation: zoomIn 1.5s ease;
+}
+
+#monthsary-screen h2 {
+    font-size: 38px;
+    color: #d94f7c;
+    animation: float 3s ease-in-out infinite;
+}
+
+#monthsary-screen p {
+    font-size: 20px;
+    color: #754052;
+}
+
+.hearts {
+    font-size: 35px;
+    letter-spacing: 15px;
+    animation: heartbeat 1.5s infinite;
+}
+
+.floating-hearts {
+    font-size: 30px;
+    margin: 20px;
+    animation: float 2.5s ease-in-out infinite;
+}
+
+#monthsary-screen button {
+    margin-top: 25px;
+    padding: 14px 28px;
+    border: none;
+    border-radius: 30px;
+    background: #d94f7c;
+    color: white;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+</style>
+
+<script>
+function closeMonthsary() {
+    document.getElementById("monthsary-screen").style.animation =
+        "fadeOut 1s ease forwards";
+
+    setTimeout(() => {
+        document.getElementById("monthsary-screen").remove();
+    }, 1000);
+}
 </script>
 </body>
 </html>
