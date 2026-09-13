@@ -6,7 +6,7 @@
 <title>PT FOR ECE</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@500;600&family=Sacramento&display=swap');
- 
+
 :root{
   --pink:#ff5f9e; --deep:#9d285d; --soft:#fff0f6; --paper:#fffafc;
 }
@@ -194,7 +194,7 @@ main{min-height:100vh;padding-top:86px}
  <div class="container letter-wrap">
   <article class="letter">
    <p>Dear My one and only baby,</p>
-   <p>Sometimes my mind gets way too loud. I overthink, I worry, and I can let little things become much bigger in my head. You have a way of helping me slow down and come back to myself.</p>
+   <p>Sometimes my mind gets way too loud. I overthink, I worry, and I can let little things become much bigger in my head, and the sad fact is that i choose to stay silent, but even when that hurts for you, youd still try to understand me You have a way of helping me slow down and come back to myself.</p>
    <p>You remind me to breathe, think clearly, and not let one bad moment control everything. You don't have to solve every problem for me. Sometimes, just having you there is enough to help me feel steady again.</p>
    <p>Thank you for being someone who helps me keep my balance and my composure, especially when I feel like I have neither. With you, I can be a little calmer, a little more patient, and a lot more at peace.</p>
    <p class="signature">Thank you for being my calm in the chaos. ♡</p>
@@ -402,9 +402,64 @@ function closeMonthsary() {
             <img src="photo3.jpeg" class="month-photo">
             <img src="photo4.jpeg" class="month-photo">
         </div>
+<button id="noButton">Leave 😭</button>
 
+<style>
+#noButton {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    padding: 12px 25px;
+    font-size: 18px;
+    border: none;
+    border-radius: 12px;
+    background: #ff6b81;
+    color: white;
+    cursor: pointer;
+    z-index: 99999;
+}
+</style>
+
+<script>
+const noButton = document.getElementById("noButton");
+
+document.addEventListener("mousemove", function(event) {
+    const rect = noButton.getBoundingClientRect();
+
+    // Center of the NO button
+    const buttonX = rect.left + rect.width / 2;
+    const buttonY = rect.top + rect.height / 2;
+
+    // Distance between mouse and button
+    const distance = Math.sqrt(
+        Math.pow(event.clientX - buttonX, 2) +
+        Math.pow(event.clientY - buttonY, 2)
+    );
+
+    // TELEPORT if mouse gets within 100 pixels 
+    if (distance < 100) {
+        teleportButton();
+    }
+});
+
+function teleportButton() {
+    const margin = 20;
+
+    const maxX = window.innerWidth - noButton.offsetWidth - margin;
+    const maxY = window.innerHeight - noButton.offsetHeight - margin;
+
+    const randomX = Math.floor(Math.random() * maxX);
+    const randomY = Math.floor(Math.random() * maxY);
+
+    noButton.style.left = randomX + "px";
+    noButton.style.top = randomY + "px";
+    noButton.style.right = "auto";
+    noButton.style.bottom = "auto";
+} 
+
+</script>
         <button onclick="closeMonthsary()">
-            Enter our story ✨
+            Ill still choose you✨
         </button>
 
     </div>
